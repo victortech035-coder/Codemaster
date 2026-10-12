@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Agency Recruitment Homes - Find Your Next Opportunity</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">UK Agency Recruitment Homes</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#jobs">Jobs</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Find Your Next Opportunity</h1>
+            <p>Discover amazing job opportunities with UK Agency Recruitment Homes</p>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search by job title, location...">
+                <button onclick="searchJobs()">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Jobs Section -->
+    <section id="jobs" class="featured-section">
+        <div class="container">
+            <h2>Available Positions</h2>
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading jobs...</p>
+            </div>
+            <div class="jobs-grid" id="jobsContainer">
+                <!-- Jobs will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About UK Agency Recruitment Homes</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>We are a leading recruitment agency dedicated to connecting talented professionals with exceptional employers across the UK. With years of experience in the recruitment industry, we understand what it takes to find the perfect job match.</p>
+                    <p>Our mission is to make the job search process simple, transparent, and rewarding for every candidate. We work with top employers to bring you the best opportunities in your field.</p>
+                </div>
+                <div>
+                    <ul class="about-features">
+                        <li>Expert Recruitment Consultants</li>
+                        <li>Wide Range of Job Opportunities</li>
+                        <li>Fast Application Process</li>
+                        <li>Competitive Salaries</li>
+                        <li>Career Development Support</li>
+                        <li>Professional Development Training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="featured-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem; color: #0052cc; font-size: 2rem;">Get In Touch</h2>
+            <div style="max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px;">
+                <form id="contactForm" onsubmit="handleContactForm(event)">
+                    <div class="form-group">
+                        <label for="contactName">Name:</label>
+                        <input type="text" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email:</label>
+                        <input type="email" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message:</label>
+                        <textarea id="contactMessage" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <div id="contactSuccess" class="success-message">
+                    ✓ Thank you! We'll get back to you soon.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>UK Agency Recruitment Homes is your trusted partner in finding the perfect job opportunity.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">💼</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#jobs">Jobs</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>📧 info@ukagencyrecruitment.com</p>
+                <p>📱 +44 (0) 20 1234 5678</p>
+                <p>📍 London, UK</p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 UK Agency Recruitment Homes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeApplicationModal()">&times;</span>
+            <h2>Apply for Position</h2>
+            <h3 id="jobTitle" style="color: #666; margin-bottom: 1.5rem;"></h3>
+            <div id="successMessage" class="success-message">
+                ✓ Application submitted successfully! We'll be in touch soon.
+            </div>
+            <div id="errorMessage" class="error-message"></div>
+            <form id="applicationForm" onsubmit="submitApplication(event)">
+                <div class="form-group">
+                    <label for="candidateName">Full Name *</label>
+                    <input type="text" id="candidateName" required>
+                </div>
+                <div class="form-group">
+                    <label for="candidateEmail">Email Address *</label>
+                    <input type="email" id="candidateEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="candidatePhone">Phone Number *</label>
+                    <input type="tel" id="candidatePhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="resumeFile">Upload Resume (PDF/DOC) *</label>
+                    <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" required>
+                </div>
+                <div class="form-group">
+                    <label for="coverLetter">Cover Letter</label>
+                    <textarea id="coverLetter" placeholder="Tell us why you're interested in this position..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
